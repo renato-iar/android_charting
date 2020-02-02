@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Charting Tests</string>
+    <string name="reload_charts">Reload charts</string>
+</resources>
