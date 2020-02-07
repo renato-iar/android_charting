@@ -110,9 +110,9 @@ public class ChartView extends View {
     public final float transformToYViewCoordinates(float y) {
         final float h   = this.getHeight();
         final float ty  = (y - this.y_axis.origin) * this.y_axis_scale + this.insets.top;
-        final float out = h - ty;
+        //final float out = h - ty;
 
-        return out;
+        return h - ty;
     }
 
     public final int getPlotCount() {
@@ -197,6 +197,9 @@ public class ChartView extends View {
                 this.re_set_draw();
             }
         }
+    }
+    public final void clearPlots() {
+        this.removePlots(new ArrayList<>(this.plots));
     }
     // endregion instance methods
 

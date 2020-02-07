@@ -19,7 +19,7 @@ public class Outlet<UIType extends View> {
         ResultType query(@Nullable UIType uiElement);
     }
 
-    private int ui_element_id   = 0;
+    private int ui_element_id;
     private UIType ui_element   = null;
 
     @IdRes
@@ -40,10 +40,12 @@ public class Outlet<UIType extends View> {
         return this.ui_element;
     }
 
-    public final void action(@NonNull OutletAction<UIType> action) {
+    @NonNull
+    public final Outlet<UIType> execute(@NonNull OutletAction<UIType> action) {
         if (this.ui_element != null) {
             action.perform(this.ui_element);
         }
+        return this;
     }
     @Nullable
     public final <ResultType> ResultType query(@NonNull OutletQuery<UIType, ResultType> q) {
@@ -58,7 +60,7 @@ public class Outlet<UIType extends View> {
         return r == null ? defaultValue : r;
     }
 
-    public final boolean load(@Nullable View view) {
+    public final Outlet<UIType> load(@Nullable View view) {
 
         this.ui_element = null;
 
@@ -66,9 +68,9 @@ public class Outlet<UIType extends View> {
             this.ui_element = view.findViewById(this.ui_element_id);
         }
 
-        return this.ui_element != null;
+        return this;
     }
-    public final boolean load(@Nullable Activity activity) {
+    public final Outlet<UIType> load(@Nullable Activity activity) {
 
         this.ui_element = null;
 
@@ -76,7 +78,7 @@ public class Outlet<UIType extends View> {
             this.ui_element = activity.findViewById(this.ui_element_id);
         }
 
-        return this.ui_element != null;
+        return this;
 
     }
     public final void unload() {
@@ -84,14 +86,14 @@ public class Outlet<UIType extends View> {
     }
 
     public final void setVisibility(final int visibility) {
-        this.action(v -> v.setVisibility(visibility));
+        this.execute(v -> v.setVisibility(visibility));
     }
     public final int getVisibility() {
         return this.query(View.GONE, View::getVisibility);
     }
 
     public final void setAlpha(final float alpha) {
-        this.action(v -> v.setAlpha(alpha));
+        this.execute(v -> v.setAlpha(alpha));
     }
     public final float getAlpha() {
         return this.query(0.0f, View::getAlpha);
@@ -102,7 +104,7 @@ public class Outlet<UIType extends View> {
         return this.query(View::getLayoutParams);
     }
     public final void setLayoutParams(@NonNull ViewGroup.LayoutParams params) {
-        this.action(v -> v.setLayoutParams(params));
+        this.execute(v -> v.setLayoutParams(params));
     }
 
     public Outlet(@IdRes int id) {

@@ -11,6 +11,7 @@
         android:layout_weight="1">
 
         <fragment
+            android:id="@+id/chart_fragment"
             android:tag="ChartFragment"
             android:name="com.riar.chartingtests.ChartFragment"
             tools:layout="@layout/chart_fragment"
@@ -28,6 +29,7 @@
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:text="@string/reload_charts"/>
+        android:text="@string/reload_charts"
+        android:onClick="onReload"/>
 
 </LinearLayout>

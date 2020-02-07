@@ -18,6 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="1:1" />
+    <ProgressBar
+        android:id="@+id/pie_chart_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/pie_chart"
+        app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+        app:layout_constraintStart_toStartOf="@+id/pie_chart"
+        app:layout_constraintEnd_toEndOf="@+id/pie_chart"
+        android:visibility="gone"/>
 
     <com.riar.charts.ChartView
         android:id="@+id/bar_chart"
@@ -30,6 +39,15 @@
         app:layout_constraintTop_toBottomOf="@+id/pie_chart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+        android:id="@+id/bar_chart_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/bar_chart"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_chart"
+        app:layout_constraintStart_toStartOf="@+id/bar_chart"
+        app:layout_constraintEnd_toEndOf="@+id/bar_chart"
+        android:visibility="gone"/>
 
     <com.riar.charts.ChartView
         android:id="@+id/line_scatter_chart"
@@ -42,5 +60,14 @@
         app:layout_constraintTop_toBottomOf="@+id/bar_chart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+        android:id="@+id/line_scatter_chart_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/line_scatter_chart"
+        app:layout_constraintBottom_toBottomOf="@+id/line_scatter_chart"
+        app:layout_constraintStart_toStartOf="@+id/line_scatter_chart"
+        app:layout_constraintEnd_toEndOf="@+id/line_scatter_chart"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
