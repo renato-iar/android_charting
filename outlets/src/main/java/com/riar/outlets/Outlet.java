@@ -114,4 +114,19 @@ public class Outlet<UIType extends View> {
         this(0);
     }
 
+    public interface OnViewActionCallback<ViewType extends View> {
+
+        void perform(@NonNull ViewType element);
+
+    }
+
+    public static <ViewType extends View> void on(@Nullable View view, @IdRes int id, @NonNull OnViewActionCallback<ViewType> action) {
+        if (view != null && id != 0) {
+            final ViewType element  = view.findViewById(id);
+            if (element != null) {
+                action.perform(element);
+            }
+        }
+    }
+
 }

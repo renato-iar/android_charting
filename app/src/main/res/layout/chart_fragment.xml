@@ -5,59 +5,46 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lightGray">
+    android:background="@color/lightGray"
+    android:padding="12dp">
 
-    <com.riar.charts.ChartView
-        android:id="@+id/pie_chart"
+    <include
+        android:id="@+id/pie_chart_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintDimensionRatio="1:1" />
-    <ProgressBar
-        android:id="@+id/pie_chart_progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/pie_chart"
-        app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
-        app:layout_constraintStart_toStartOf="@+id/pie_chart"
-        app:layout_constraintEnd_toEndOf="@+id/pie_chart"
-        android:visibility="gone"/>
+        layout="@layout/pie_chart_layout"/>
 
-    <com.riar.charts.ChartView
-        android:id="@+id/bar_chart"
+    <include
+        android:id="@+id/bar_chart_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintTop_toBottomOf="@+id/pie_chart"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pie_chart_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <ProgressBar
-        android:id="@+id/bar_chart_progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/bar_chart"
-        app:layout_constraintBottom_toBottomOf="@+id/bar_chart"
-        app:layout_constraintStart_toStartOf="@+id/bar_chart"
-        app:layout_constraintEnd_toEndOf="@+id/bar_chart"
-        android:visibility="gone"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        layout="@layout/bar_chart_layout"/>
 
+    <include
+        android:id="@+id/line_scatter_chart_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/bar_chart_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        layout="@layout/line_scatter_chart_layout"/>
+
+    <!--
     <com.riar.charts.ChartView
         android:id="@+id/line_scatter_chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintTop_toBottomOf="@+id/bar_chart"
+        app:layout_constraintTop_toBottomOf="@+id/bar_chart_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <ProgressBar
@@ -69,5 +56,6 @@
         app:layout_constraintStart_toStartOf="@+id/line_scatter_chart"
         app:layout_constraintEnd_toEndOf="@+id/line_scatter_chart"
         android:visibility="gone"/>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
