@@ -17,6 +17,9 @@ import com.riar.charts.ChartView;
 import com.riar.charts.Paint;
 import com.riar.charts.PaintCallback;
 import com.riar.charts.PiePlot;
+import com.riar.charts.PiePlotSegmentProperties;
+import com.riar.charts.PiePlotSegmentPropertiesCallbackInput;
+import com.riar.charts.PieSegmentPropertiesCallback;
 import com.riar.outlets.Outlet;
 
 import java.util.ArrayList;
@@ -24,10 +27,10 @@ import java.util.List;
 
 public class PieChartFragment extends SinglePlotChartFragment<PiePlotEntry, PieChartViewModel, PiePlot<PiePlotEntry>> {
 
-    public static final String TAG                          = PieChartFragment.class.getSimpleName();
+    public static final String TAG                                          = PieChartFragment.class.getSimpleName();
 
-    private Outlet<LinearLayout> labels_linearLayout        = new Outlet<>(R.id.pie_chart_labels_linearLayout);
-    private PaintCallback pie_chart_paint_callback          = (int index, int count, @Nullable BasePlot.DrawContext context) -> {
+    private Outlet<LinearLayout> labels_linearLayout                        = new Outlet<>(R.id.pie_chart_labels_linearLayout);
+    private PaintCallback pie_chart_paint_callback                          = (int index, int count, @Nullable BasePlot.DrawContext context) -> {
         final int gray              = (int)(255.0f * index / count);
         final List<Paint> paints    = new ArrayList<>();
         final Paint fill            = new Paint.FillPaint(gray, gray, gray, 255);
@@ -38,6 +41,7 @@ public class PieChartFragment extends SinglePlotChartFragment<PiePlotEntry, PieC
 
         return paints;
     };
+    private PieSegmentPropertiesCallback pie_segment_properties_callback    = (@Nullable PiePlotSegmentPropertiesCallbackInput input) -> new PiePlotSegmentProperties(null, 0.750f);
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class PieChartFragment extends SinglePlotChartFragment<PiePlotEntry, PieC
         super.hook_SetupChart(chart);
 
         this.getPlot().setPaintCallback(this.pie_chart_paint_callback);
+        this.getPlot().setPropertiesCallback(this.pie_segment_properties_callback);
     }
 
     @NonNull
