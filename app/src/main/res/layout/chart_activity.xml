@@ -13,7 +13,7 @@
         <fragment
             android:id="@+id/chart_fragment"
             android:tag="ChartFragment"
-            android:name="com.riar.chartingtests.ChartFragment"
+            android:name="com.riar.chartingtests.ChartsFragment"
             tools:layout="@layout/chart_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

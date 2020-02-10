@@ -1,61 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/lightGray"
     android:padding="12dp">
 
-    <include
-        android:id="@+id/pie_chart_layout"
+    <fragment
+        android:name="com.riar.chartingtests.uielements.BarChartFragment"
+        android:tag="BarChartFragment"
+        android:id="@+id/bar_chart_fragment"
+        tools:layout="@layout/bar_chart_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        layout="@layout/pie_chart_layout"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <include
-        android:id="@+id/bar_chart_layout"
+    <fragment
+        android:name="com.riar.chartingtests.uielements.PieChartFragment"
+        android:tag="PieChartFragment"
+        android:id="@+id/pie_chart_fragment"
+        tools:layout="@layout/bar_chart_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/pie_chart_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        layout="@layout/bar_chart_layout"/>
-
-    <include
-        android:id="@+id/line_scatter_chart_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/bar_chart_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        layout="@layout/line_scatter_chart_layout"/>
-
-    <!--
-    <com.riar.charts.ChartView
-        android:id="@+id/line_scatter_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintTop_toBottomOf="@+id/bar_chart_layout"
+        app:layout_constraintTop_toBottomOf="@+id/bar_chart_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-    <ProgressBar
-        android:id="@+id/line_scatter_chart_progressBar"
-        android:layout_width="wrap_content"
+
+    <fragment
+        android:name="com.riar.chartingtests.uielements.LineScatterChartFragment"
+        android:tag="LineScatterChartFragment"
+        android:id="@+id/line_scatter_chart_fragment"
+        tools:layout="@layout/line_scatter_chart_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/line_scatter_chart"
-        app:layout_constraintBottom_toBottomOf="@+id/line_scatter_chart"
-        app:layout_constraintStart_toStartOf="@+id/line_scatter_chart"
-        app:layout_constraintEnd_toEndOf="@+id/line_scatter_chart"
-        android:visibility="gone"/>
-    -->
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/pie_chart_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

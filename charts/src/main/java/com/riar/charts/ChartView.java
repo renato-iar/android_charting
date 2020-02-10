@@ -56,7 +56,7 @@ public class ChartView extends View {
         this.re_set_draw();
     }
 
-    private void add_plot(@NonNull BasePlot plot, boolean refresh) {
+    private <PlotType extends BasePlot> void add_plot(@NonNull PlotType plot, boolean refresh) {
         if (!this.plots.contains(plot)) {
             this.plots.add(plot);
             plot.setChart(this);
@@ -66,7 +66,7 @@ public class ChartView extends View {
             }
         }
     }
-    private void add_plots(@Nullable Collection<BasePlot> plots, boolean refresh) {
+    private void add_plots(@Nullable Collection<? extends BasePlot> plots, boolean refresh) {
         if (plots != null && !plots.isEmpty()) {
             for (BasePlot plot: plots) {
                 this.add_plot(plot, false);
@@ -159,6 +159,10 @@ public class ChartView extends View {
         return this.setYAxis(new ECYAxis(origin, length));
     }
 
+    public final ChartView setInsets(float commonInset) {
+        return this.setInsets(commonInset, commonInset, commonInset, commonInset);
+    }
+
     @NonNull
     public final ChartView setInsets(@NonNull ChartInsets insets) {
         this.insets = insets;
@@ -171,10 +175,10 @@ public class ChartView extends View {
         return this.setInsets(new ChartInsets(left, right, top, bottom));
     }
 
-    public final void addPlot(@NonNull BasePlot plot) {
+    public final <PlotType extends BasePlot> void addPlot(@NonNull PlotType plot) {
         this.add_plot(plot, true);
     }
-    public final void addPlots(@Nullable Collection<BasePlot> plots) {
+    public final void addPlots(@Nullable Collection<? extends BasePlot> plots) {
         this.add_plots(plots, true);
     }
     public final void removePlot(@NonNull BasePlot plot) {

@@ -17,8 +17,8 @@ public class ChartActivity extends FragmentActivity {
 
     public void onReload(View sender) {
         final Fragment fragment = this.getSupportFragmentManager().findFragmentById(R.id.chart_fragment);
-        if (fragment instanceof ChartFragment) {
-            ((ChartFragment) fragment).onReload();
+        if (fragment instanceof ChartsFragment) {
+            ((ChartsFragment) fragment).onReload();
         }
     }
 
